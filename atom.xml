@@ -4,7 +4,7 @@
   <title><![CDATA[Learn and Live]]></title>
   <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
   <link href="http://mythZhu.github.com/"/>
-  <updated>2013-09-02T14:05:11+08:00</updated>
+  <updated>2013-09-02T14:30:57+08:00</updated>
   <id>http://mythZhu.github.com/</id>
   <author>
     <name><![CDATA[Myth]]></name>
@@ -169,6 +169,7 @@ In addition, you should make sure that your ssh public key has been added to you
 <ul>
 <li>If you login with <em>zsh</em>, add <code>alias rake='noglob rake'</code> to <code>~/.zshrc</code>.</li>
 <li>Before <code>rake deply</code>, you can preview your new posts using <code>rake preview</code>.</li>
+<li>If you want to manage your blog from two places, <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/#disqus_thread">this document</a> can help you.</li>
 </ul>
 
 ]]></content>
