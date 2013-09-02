@@ -7,6 +7,12 @@ categories:
 ---
 
 ------
+
+This blog will show you how to deploy Octopress to Github and how to publish your blogs with it. 
+Follow it, enjoy it.
+<!--more-->
+
+------
 ## Before You Begin ##
 
 ### Install git ###
