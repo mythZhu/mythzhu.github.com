@@ -4,7 +4,7 @@
   <title><![CDATA[Learn and Live]]></title>
   <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
   <link href="http://mythZhu.github.com/"/>
-  <updated>2013-09-02T14:30:57+08:00</updated>
+  <updated>2013-09-02T14:50:24+08:00</updated>
   <id>http://mythZhu.github.com/</id>
   <author>
     <name><![CDATA[Myth]]></name>
@@ -19,6 +19,14 @@
     <updated>2013-09-02T13:14:00+08:00</updated>
     <id>http://mythZhu.github.com/blog/2013/09/02/how-to-deploy-octopress-to-github</id>
     <content type="html"><![CDATA[<hr />
+
+<p>This blog will show you how to deploy Octopress to Github and how to publish your blogs with it.
+Follow it, enjoy it.</p>
+
+<!--more-->
+
+
+<hr />
 
 <h2>Before You Begin</h2>
 
