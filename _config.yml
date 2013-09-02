@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://mythZhu.github.com
+title: Learn and Live
+subtitle: The shortest answer is doing.
+author: Myth
 simple_search: http://google.com/search
 description:
 
@@ -98,3 +98,10 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# Navbar
+navigation:
+- text: Home
+  url: /index.html
+- text: Archives
+  url: /blog/archives/index.html
