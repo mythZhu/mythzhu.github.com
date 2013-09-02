@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://mythZhu.github.com/blog/archives/</loc>
+        <loc>http://mythzhu.github.com/blog/archives/</loc>
         <lastmod>2013-09-02T11:27:53+08:00</lastmod>
     </url>
     <url>
-        <loc>http://mythZhu.github.com/</loc>
+        <loc>http://mythzhu.github.com/</loc>
         <lastmod>2013-09-02T11:27:53+08:00</lastmod>
     </url>
     <url>
-        <loc>http://mythZhu.github.com/robots.txt</loc>
+        <loc>http://mythzhu.github.com/robots.txt</loc>
         <lastmod>2013-09-02T11:27:53+08:00</lastmod>
     </url>
 </urlset>
