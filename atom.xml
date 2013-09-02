@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Learn and Live]]></title>
+  <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
+  <link href="http://mythZhu.github.com/"/>
+  <updated>2013-09-02T11:46:39+08:00</updated>
+  <id>http://mythZhu.github.com/</id>
+  <author>
+    <name><![CDATA[Myth]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
