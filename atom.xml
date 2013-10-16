@@ -4,7 +4,7 @@
   <title><![CDATA[Learn and Live]]></title>
   <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
   <link href="http://mythZhu.github.com/"/>
-  <updated>2013-09-11T17:10:48+08:00</updated>
+  <updated>2013-10-16T10:46:20+08:00</updated>
   <id>http://mythZhu.github.com/</id>
   <author>
     <name><![CDATA[Myth]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mutex vs. Binary Semaphore]]></title>
+    <link href="http://mythZhu.github.com/blog/2013/10/16/mutex-vs-binary-semaphore/"/>
+    <updated>2013-10-16T09:53:00+08:00</updated>
+    <id>http://mythZhu.github.com/blog/2013/10/16/mutex-vs-binary-semaphore</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>Mutices and semaphores are among the most basic tools in multithreaded programming.
+However few people know what is the difference between them.</p>
+
+<!--more-->
+
+
+<hr />
+
+<h3>Mutex Is a Subset of Semaphore</h3>
+
+<p>A semaphore can be a Mutex but a Mutex can never be semaphore. This simply means
+that a binary semaphore can be used as Mutex, but a Mutex can never exhibit the
+functionality of semaphore.</p>
+
+<h3>Mutex Could Be Acquired More Than Once</h3>
+
+<p>Both semaphores and Mutices are non­recursive in nature, while Mutices could but
+not recommanded be implemented as recursive ones.</p>
+
+<h3>Mutex is More Responsible than Semaphore</h3>
+
+<p>No one owns semaphores, whereas Mutex are owned and the owner is held responsible
+for them. This is an important distinction from a debugging perspective. In the
+case of Mutex, the thread that owns the Mutex is responsible for freeing it.
+However, in the case of semaphores, this condition is not required. Any other
+thread can signal to free the semaphore.</p>
+
+<h3>Different Purpose</h3>
+
+<p>A Mutex, by definition, is used to serialize accesses to a section of re­entrant
+code that cannot be executed concurrently by more than one thread. A semaphore,
+by definition, restricts the number of simultaneous users of a shared resource up
+to a maximum number.</p>
+
+<h3>Different Scope</h3>
+
+<p>Another difference that would matter to developers is that semaphores are system
+wide and remain in the form of files on the filesystem, unless otherwise cleaned
+up. Mutex are process­wide and get cleaned up automatically when a process exits.</p>
+
+<p>The nature of semaphores makes it possible to use them in synchronizing related
+and unrelated process, as well as between threads. Mutex can be used only in
+synchronizing between threads and at most between related processes (the pthread
+implementation of the latest kernel comes with a feature that allows Mutex to be
+used between related process).</p>
+
+<h3>Mutex is Light than Semaphore</h3>
+
+<p>According to the kernel documentation, Mutices are lighter than semaphores. What
+this means is that a program with semaphore usage has a higher memory footprint
+when compared to a program having Mutex.</p>
+
+<h3>Mutex is Simpler than Semaphore</h3>
+
+<p>From a usage perspective, Mutex has simpler semantics when compared to semaphores.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CSS for Markdown]]></title>

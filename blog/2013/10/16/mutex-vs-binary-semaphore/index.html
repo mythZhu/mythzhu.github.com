@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Learn and Live</title>
+  <title>Mutex vs. Binary Semaphore - Learn and Live</title>
   <meta name="author" content="Myth">
 
   
-  <meta name="description" content="Hi. I&#8217;m Myth. Here are some thoughts of mine. Oct 16th, 2013 Mutex vs. Binary Semaphore Mutices and semaphores are among the most basic tools &hellip;">
+  <meta name="description" content="Mutex vs. Binary Semaphore Oct 16th, 2013 Mutices and semaphores are among the most basic tools in multithreaded programming.
+However few people &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mythZhu.github.com">
+  <link rel="canonical" href="http://mythZhu.github.com/blog/2013/10/16/mutex-vs-binary-semaphore">
   <link href="/favicon.png" rel="icon">
   <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
@@ -48,7 +49,7 @@
   	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
   	      <ul class="nav">
     
-        <li class="active"><a href="/index.html">Home</a></li>
+        <li ><a href="/index.html">Home</a></li>
     
         <li ><a href="/blog/archives/index.html">Archives</a></li>
     
@@ -71,24 +72,14 @@
     <div class="span12">
       <div class="row-fluid">
         <div id="content">
-          <div class="jumbotron">
-  <div class="container">
-    Hi. I&#8217;m Myth.
-    <h3 class="tagline">Here are some thoughts of mine.</h3>
-  </div>
-</div>
-
-
-<div class="blog-index">
+          <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
 
-  <div class="row-fluid">
-    <div class="span2">
-		<h1 class="date-time">
+  <header>
+  <div class="jumbotron">
+    Mutex vs. Binary Semaphore
+	<h5>
 
 
 
@@ -101,135 +92,120 @@
 
 
 <i class="icon-calendar-empty"></i> <time datetime="2013-10-16T09:53:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2013</time></h5>
-          <div class="row-fluid">
-          
-          </div>
-          
-          <div class="row-fluid">
-          
-          </div>
-          
-    </div>
-    <div class="span10">
-      <h1 class="link"><a href="/blog/2013/10/16/mutex-vs-binary-semaphore/">Mutex vs. Binary Semaphore</a></h1>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
       <hr />
 
 <p>Mutices and semaphores are among the most basic tools in multithreaded programming.
 However few people know what is the difference between them.</p>
 
+<!--more-->
 
-      
-       <a href="/blog/2013/10/16/mutex-vs-binary-semaphore/">Read on &rarr;</a> 
+
+<hr />
+
+<h3>Mutex Is a Subset of Semaphore</h3>
+
+<p>A semaphore can be a Mutex but a Mutex can never be semaphore. This simply means
+that a binary semaphore can be used as Mutex, but a Mutex can never exhibit the
+functionality of semaphore.</p>
+
+<h3>Mutex Could Be Acquired More Than Once</h3>
+
+<p>Both semaphores and Mutices are non­recursive in nature, while Mutices could but
+not recommanded be implemented as recursive ones.</p>
+
+<h3>Mutex is More Responsible than Semaphore</h3>
+
+<p>No one owns semaphores, whereas Mutex are owned and the owner is held responsible
+for them. This is an important distinction from a debugging perspective. In the
+case of Mutex, the thread that owns the Mutex is responsible for freeing it.
+However, in the case of semaphores, this condition is not required. Any other
+thread can signal to free the semaphore.</p>
+
+<h3>Different Purpose</h3>
+
+<p>A Mutex, by definition, is used to serialize accesses to a section of re­entrant
+code that cannot be executed concurrently by more than one thread. A semaphore,
+by definition, restricts the number of simultaneous users of a shared resource up
+to a maximum number.</p>
+
+<h3>Different Scope</h3>
+
+<p>Another difference that would matter to developers is that semaphores are system
+wide and remain in the form of files on the filesystem, unless otherwise cleaned
+up. Mutex are process­wide and get cleaned up automatically when a process exits.</p>
+
+<p>The nature of semaphores makes it possible to use them in synchronizing related
+and unrelated process, as well as between threads. Mutex can be used only in
+synchronizing between threads and at most between related processes (the pthread
+implementation of the latest kernel comes with a feature that allows Mutex to be
+used between related process).</p>
+
+<h3>Mutex is Light than Semaphore</h3>
+
+<p>According to the kernel documentation, Mutices are lighter than semaphores. What
+this means is that a program with semaphore usage has a higher memory footprint
+when compared to a program having Mutex.</p>
+
+<h3>Mutex is Simpler than Semaphore</h3>
+
+<p>From a usage perspective, Mutex has simpler semantics when compared to semaphores.</p>
+
     </div>
   </div>
 
 
 
-    </article>
-    
+  <footer>
     <hr>
     
-  
-  
-    <article>
+    <div class="row-fluid">
       
-
-  <div class="row-fluid">
-    <div class="span2">
-		<h1 class="date-time">
-
-
+      <div class="span6">
+        <p class="meta">
+        
+        
 
 
-
-
-
-
-  
-
-
-<i class="icon-calendar-empty"></i> <time datetime="2013-09-11T16:56:00+08:00" pubdate data-updated="true">Sep 11<span>th</span>, 2013</time></h5>
-          <div class="row-fluid">
-          
-          </div>
-          
-          <div class="row-fluid">
-          
-          </div>
-          
-    </div>
-    <div class="span10">
-      <h1 class="link"><a href="/blog/2013/09/11/css-for-markdown/">CSS for Markdown</a></h1>
-      <hr />
-
-<p>Markdown is a formatting syntax for text that can be read by humans and can be easily converted to HTML.
-This CSS helps make target file prettierr when converting markdown file to other format.</p>
-
-
+        </p>
+      </div>
       
-       <a href="/blog/2013/09/11/css-for-markdown/">Read on &rarr;</a> 
-    </div>
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
   </div>
-
-
-
-    </article>
-    
-    <hr>
-    
-  
-  
-    <article>
-      
-
-  <div class="row-fluid">
-    <div class="span2">
-		<h1 class="date-time">
-
-
-
-
-
-
-
-
-  
-
-
-<i class="icon-calendar-empty"></i> <time datetime="2013-09-02T13:14:00+08:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2013</time></h5>
-          <div class="row-fluid">
-          
-          </div>
-          
-          <div class="row-fluid">
-          
-          </div>
-          
-    </div>
-    <div class="span10">
-      <h1 class="link"><a href="/blog/2013/09/02/how-to-deploy-octopress-to-github/">How to Deploy Octopress to Github</a></h1>
-      <hr />
-
-<p>This blog will show you how to deploy Octopress to Github and how to publish your blogs with it.
-Follow it, enjoy it.</p>
-
-
-      
-       <a href="/blog/2013/09/02/how-to-deploy-octopress-to-github/">Read on &rarr;</a> 
-    </div>
-  </div>
-
-
-
-    </article>
-    
-  
-  <div class="pagination">
-    
-
-    
-  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/09/11/css-for-markdown/" title="Previous Post: CSS for Markdown">&laquo; CSS for Markdown</a>
+          
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+</div>
+
 
 
         </div>
