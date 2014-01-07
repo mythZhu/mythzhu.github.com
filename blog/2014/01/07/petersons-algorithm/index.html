@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Peterson's algorithm - Learn and Live</title>
+  <meta name="author" content="Myth">
+
+  
+  <meta name="description" content="Peterson's Algorithm Jan 7th, 2014 Peterson&rsquo;s algorithm is a concurrent programming algorithm for mutual exclusion
+that allows two processes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mythZhu.github.com/blog/2014/01/07/petersons-algorithm">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Learn and Live" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/index.html">Home</a></li>
+    
+        <li ><a href="/blog/archives/index.html">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Peterson's Algorithm
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-01-07T09:49:00+08:00" pubdate data-updated="true">Jan 7<span>th</span>, 2014</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <hr />
+
+<p>Peterson&rsquo;s algorithm is a concurrent programming algorithm for mutual exclusion
+that allows two processes to share a single-use resource without conflict.</p>
+
+<!--more-->
+
+
+<hr />
+
+<h2>The algorithm</h2>
+
+<p>The following C code shows how Petersion&rsquo;s algorithm works. It uses the technique
+<em>busy-waiting</em> or <em>spinning</em>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#define FALSE 0
+</span><span class='line'>#define TRUE  1
+</span><span class='line'>#define N     2
+</span><span class='line'>
+</span><span class='line'>int turn;
+</span><span class='line'>int interested[N];
+</span><span class='line'>
+</span><span class='line'>void enter_region(int process) {
+</span><span class='line'>    int other;
+</span><span class='line'>
+</span><span class='line'>    other = 1 - process;
+</span><span class='line'>    interested[process] = TRUE;
+</span><span class='line'>    turn = process;
+</span><span class='line'>    while (turn == process && interested[other] == TRUE);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void leave_region(int process) {
+</span><span class='line'>    interested[process] = FALSE;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>The proof</h2>
+
+<p>The algorithm does satisfy the three essential criteria to solve the critical section
+problem, provided that changes to the turn, interested[0], and interested[1] variables
+propagate immediately and atomically. The three criteria are mutual exclusion, progress,
+and bounded waiting.</p>
+
+<h3>Mutual exclusion</h3>
+
+<p>P0 and P1 can never be in the critical section at the same time: If P0 is in its critical
+section, then interested[0] is true. In addition, either interested[1] is false (meaning
+P1 has left its critical section), or turn is 0 (meaning P1 is just now trying to enter
+the critical section, but graciously waiting), or P1 is going to set its turn (trying to
+enter its critical section, after setting interested[1] to true but before setting turn to
+0 and busy waiting). So if both processes are in their critical sections then we conclude
+that the state must satisfy interested[0] and interested[1] and turn = 0 and turn = 1. No
+state can satisfy both turn = 0 and turn = 1, so there can be no state where both processes
+are in their critical sections.</p>
+
+<h3>Progress</h3>
+
+<p>Progress is defined as the following: if no process is executing in its critical section
+and some processes wish to enter their critical sections, then only those processes that
+are not executing in their remainder sections can participate in making the decision as
+to which process will enter its critical section next. This selection cannot be postponed
+indefinitely. A process cannot immediately re-enter the critical section if the other process
+has set its interested to say that it would like to enter its critical section.</p>
+
+<h3>Bounded waiting</h3>
+
+<p>Bounded waiting means that &ldquo;there exists a bound or limit on the number of times that other
+processes are allowed to enter their critical sections after a process has made a request to
+enter its critical section and before that request is granted&rdquo;. In Peterson&rsquo;s Algorithm, a
+process will not wait longer than one turn for entrance to the critical section: After giving
+priority to the other process, this process will run to completion and set its interested to 0,
+thereby allowing the other process to enter the critical section.</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/10/16/mutex-vs-binary-semaphore/" title="Previous Post: Mutex vs. Binary Semaphore">&laquo; Mutex vs. Binary Semaphore</a>
+          
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2014 - Myth -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

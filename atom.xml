@@ -4,7 +4,7 @@
   <title><![CDATA[Learn and Live]]></title>
   <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
   <link href="http://mythZhu.github.com/"/>
-  <updated>2013-10-16T10:46:20+08:00</updated>
+  <updated>2014-01-07T10:28:40+08:00</updated>
   <id>http://mythZhu.github.com/</id>
   <author>
     <name><![CDATA[Myth]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Peterson's algorithm]]></title>
+    <link href="http://mythZhu.github.com/blog/2014/01/07/petersons-algorithm/"/>
+    <updated>2014-01-07T09:49:00+08:00</updated>
+    <id>http://mythZhu.github.com/blog/2014/01/07/petersons-algorithm</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>Peterson&rsquo;s algorithm is a concurrent programming algorithm for mutual exclusion
+that allows two processes to share a single-use resource without conflict.</p>
+
+<!--more-->
+
+
+<hr />
+
+<h2>The algorithm</h2>
+
+<p>The following C code shows how Petersion&rsquo;s algorithm works. It uses the technique
+<em>busy-waiting</em> or <em>spinning</em>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#define FALSE 0
+</span><span class='line'>#define TRUE  1
+</span><span class='line'>#define N     2
+</span><span class='line'>
+</span><span class='line'>int turn;
+</span><span class='line'>int interested[N];
+</span><span class='line'>
+</span><span class='line'>void enter_region(int process) {
+</span><span class='line'>    int other;
+</span><span class='line'>
+</span><span class='line'>    other = 1 - process;
+</span><span class='line'>    interested[process] = TRUE;
+</span><span class='line'>    turn = process;
+</span><span class='line'>    while (turn == process && interested[other] == TRUE);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void leave_region(int process) {
+</span><span class='line'>    interested[process] = FALSE;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>The proof</h2>
+
+<p>The algorithm does satisfy the three essential criteria to solve the critical section
+problem, provided that changes to the turn, interested[0], and interested[1] variables
+propagate immediately and atomically. The three criteria are mutual exclusion, progress,
+and bounded waiting.</p>
+
+<h3>Mutual exclusion</h3>
+
+<p>P0 and P1 can never be in the critical section at the same time: If P0 is in its critical
+section, then interested[0] is true. In addition, either interested[1] is false (meaning
+P1 has left its critical section), or turn is 0 (meaning P1 is just now trying to enter
+the critical section, but graciously waiting), or P1 is going to set its turn (trying to
+enter its critical section, after setting interested[1] to true but before setting turn to
+0 and busy waiting). So if both processes are in their critical sections then we conclude
+that the state must satisfy interested[0] and interested[1] and turn = 0 and turn = 1. No
+state can satisfy both turn = 0 and turn = 1, so there can be no state where both processes
+are in their critical sections.</p>
+
+<h3>Progress</h3>
+
+<p>Progress is defined as the following: if no process is executing in its critical section
+and some processes wish to enter their critical sections, then only those processes that
+are not executing in their remainder sections can participate in making the decision as
+to which process will enter its critical section next. This selection cannot be postponed
+indefinitely. A process cannot immediately re-enter the critical section if the other process
+has set its interested to say that it would like to enter its critical section.</p>
+
+<h3>Bounded waiting</h3>
+
+<p>Bounded waiting means that &ldquo;there exists a bound or limit on the number of times that other
+processes are allowed to enter their critical sections after a process has made a request to
+enter its critical section and before that request is granted&rdquo;. In Peterson&rsquo;s Algorithm, a
+process will not wait longer than one turn for entrance to the critical section: After giving
+priority to the other process, this process will run to completion and set its interested to 0,
+thereby allowing the other process to enter the critical section.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mutex vs. Binary Semaphore]]></title>
