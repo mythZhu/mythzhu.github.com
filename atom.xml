@@ -4,7 +4,7 @@
   <title><![CDATA[Learn and Live]]></title>
   <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
   <link href="http://mythZhu.github.com/"/>
-  <updated>2014-01-07T10:28:40+08:00</updated>
+  <updated>2014-01-08T11:41:52+08:00</updated>
   <id>http://mythZhu.github.com/</id>
   <author>
     <name><![CDATA[Myth]]></name>
@@ -12,6 +12,171 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Talking to PostgreSQL]]></title>
+    <link href="http://mythZhu.github.com/blog/2014/01/08/talking-to-postgresql/"/>
+    <updated>2014-01-08T10:03:00+08:00</updated>
+    <id>http://mythZhu.github.com/blog/2014/01/08/talking-to-postgresql</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>PostgreSQL is a powerful object-relational database management system, provided under
+a flexible BSD-style license. PostgreSQL has bindings for many programming languages
+such as C, C++, Python, Java, PHP, Ruby and so on. It can be used to power anything
+from simple web applications to massive databases with millions of records.</p>
+
+<!--more-->
+
+
+<hr />
+
+<h2>Client Installation</h2>
+
+<p>If you only wish to connect to a PostgreSQL server, just install the PostgreSQL client:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install postgresql-client</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You then connect to the server with the following command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>psql -h &lt;server&gt; &lt;database&gt; &lt;user&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>Server Installation</h2>
+
+<p>To install use the command line and type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install postgresql</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you are a beginner, pgAdmin is helpful for you. It&rsquo;s a handy GUI for PostgreSQL:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install pgadmin3</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>Basic Server Setup</h2>
+
+<p>To start off, we need to change the PostgresSQL postgres user password:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres psql postgres
+</span><span class='line'>\password postgres</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You then give your password when prompted and type Control-D to exit.</p>
+
+<hr />
+
+<h2>Create Database</h2>
+
+<p>Before creation, create a user as the owner of the first database:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres createuser -P tester</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then create a password for the user:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres psql
+</span><span class='line'>\password tester</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To create the first database, which we will call &ldquo;mydb&rdquo;, simply type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres createdb mydb -O tester</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Certainly, you can drop it like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres dropdb mydb</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>Inspect Database</h2>
+
+<p>Get help:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \?
+</span><span class='line'>mydb=# \h</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Show version:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# SELECT version();</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change database:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \c [database]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Show databases:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \l</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Show tables:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \dt</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Show table columns:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \d [database]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Read commands from file:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \i [file]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Quit:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mydb=# \q</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>Backup Database</h2>
+
+<p>Dump a database:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres pg_dump [database] &gt; [file]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Restore a database:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -u postgres psql -d [database] -f [file]</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Peterson's algorithm]]></title>
