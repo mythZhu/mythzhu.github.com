@@ -18,8 +18,9 @@ a virtual machine and in the cloud.
 
 ## JeOS ##
 
-[JeOS][2] is the abbreviation (pronounced "juice") for Just Enough Operating System as
-it applies to a software appliances and embedded operating systems.
+[JeOS](http://en.wikipedia.org/wiki/Just_enough_operating_system) is the abbreviation
+(pronounced "juice") for Just Enough Operating System as it applies to a software
+appliances and embedded operating systems.
 
 Typically, a JeOS consists of the following:
 
@@ -32,9 +33,9 @@ Typically, a JeOS consists of the following:
 
 ## Software appliance ##
 
-A [software appliance][3] is a software application that might be combined with JeOS
-for it to run optimally on industry standard hardware (typically a server) or in a
-virtual machine.
+A [software appliance](http://en.wikipedia.org/wiki/Software_appliance) is a software
+application that might be combined with JeOS for it to run optimally on industry
+standard hardware (typically a server) or in a virtual machine.
 
 ### Benefits ###
 
@@ -60,8 +61,9 @@ are installed on top of an operating system:
 
 ## Virtual appliance ##
 
-A [virtual appliance][4] is a virtual machine image designed to run on a virtualization
-platform (e.g., VirtualBox, Xen, VMware Workstation, Parallels Workstation).
+A [virtual appliance](http://http://en.wikipedia.org/wiki/Virtual_appliance) is a virtual
+machine image designed to run on a virtualization platform (e.g., VirtualBox, Xen, VMware
+Workstation, Parallels Workstation).
 
 Virtual appliances are a subset of the broader class of software appliances. Installation
 of a software appliance on a virtual machine and packaging that into an image creates a
@@ -109,16 +111,17 @@ virtual appliance.
 
 Installing to a VirtualBox is one of the fastest and easiest ways to get up and running
 with TurnKey Linux. The installation process is the same for all appliances. We'll be
-installing [TurnKey Joomla][5] as an example.
+installing [TurnKey Joomla](http://www.turnkeylinux.org/joomla) as an example.
 
 ### Install VirtualBox ###
 
-If you haven't done so already, download and install [VirtualBox][6].
+If you haven't done so already, download and install [VirtualBox](http://www.virtualbox.org).
 
 ### Download image ###
 
-[VM optimized images][7] and [Generic ISO image][8] work well with VirtualBox. We will
-choose default VM build and use that.
+[VM optimized images](http://www.turnkeylinux.org/docs/builds#vm) and
+[Generic ISO image](http://www.turnkeylinux.org/docs/builds#iso) work well with VirtualBox.
+We will choose default VM build and use that.
 
 ### Create new VM ###
 
@@ -138,12 +141,3 @@ After you've created the new VM, you'll need to tweak its configuration:
 
 Now boot your virtual appliance for the first time.
 
-
-[1]: <http://www.turnkeylinux.org> "Turnkey Linux"
-[2]: <http://en.wikipedia.org/wiki/Just_enough_operating_system> "JeOS"
-[3]: <http://en.wikipedia.org/wiki/Software_appliance> "Software appliance"
-[4]: <http://http://en.wikipedia.org/wiki/Virtual_appliance> "Virtual appliance"
-[5]: <http://www.turnkeylinux.org/joomla> "Joomla"
-[6]: <http://www.virtualbox.org> "VirtualBox"
-[7]: <http://www.turnkeylinux.org/docs/builds#vm> "TurnKey vm images"
-[8]: <http://www.turnkeylinux.org/docs/builds#iso> "TurnKey iso images"
