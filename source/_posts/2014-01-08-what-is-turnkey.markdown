@@ -8,7 +8,7 @@ categories:
 
 ------
 
-[Turnkey Linux][1] is a virtual appliance library that integrates and polishes the very
+Turnkey Linux is a virtual appliance library that integrates and polishes the very
 best open source software into ready to use solutions. Each virtual appliance is
 optimized for ease of use and can be deployed in just a few minutes on bare metal,
 a virtual machine and in the cloud.
@@ -138,7 +138,6 @@ After you've created the new VM, you'll need to tweak its configuration:
 
 Now boot your virtual appliance for the first time.
 
------
 
 [1]: <http://www.turnkeylinux.org> "Turnkey Linux"
 [2]: <http://en.wikipedia.org/wiki/Just_enough_operating_system> "JeOS"
