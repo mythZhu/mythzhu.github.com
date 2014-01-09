@@ -14,12 +14,14 @@ is optimized for ease of use and can be deployed in just a few minutes on bare
 metal, a virtual machine and in the cloud.
 <!--more-->
 
+
 ------
 
 ## Background ##
 
 The following background knowledge could help you understand 'what is TurnKey linux'.
 If you have been similiar with them, you could skip this section.
+
 
 ### JeOS ###
 
@@ -30,9 +32,13 @@ appliances and embedded operating systems.
 Typically, a JeOS consists of the following:
 
 - OS core (kernel, drives, etc.)
+
 - OS minimum maintenance tools
+
 - Minimum user space tools
+
 - Packages repository (DVD or network based)
+
 
 ### Software appliance ###
 
@@ -44,12 +50,15 @@ Software appliances have several benefits over traditional software applications
 that are installed on top of an operating system:
 
 - Simplified deployment (dependency, compatibility, conflict)
+
 - Improved isolation (security, crash)
 
 There two main types of software appliances:
 
 - Live CD appliance
+
 - Virtual appliance
+
 
 ### Virtual appliance ###
 
@@ -60,6 +69,7 @@ VirtualBox, Xen, VMware Workstation, Parallels Workstation).
 Virtual appliances are a subset of the broader class of software appliances.
 Installation of a software appliance on a virtual machine and packaging that into
 an image creates a virtual appliance.
+
 
 ------
 
@@ -83,6 +93,7 @@ an image creates a virtual appliance.
 
 - Assured integrity
 
+
 ------
 
 ## Installation ##
@@ -91,33 +102,41 @@ Installing to a VirtualBox is one of the fastest and easiest ways to get up and
 running with TurnKey Linux. The installation process is the same for all appliances.
 We'll be installing [LAPP](http://www.turnkeylinux.org/lapp) as an example.
 
-### Install VirtualBox ###
+
+### 1. Install VirtualBox ###
 
 If you haven't done so already, download and install [VirtualBox](http://www.virtualbox.org).
 
-### Download image ###
+
+### 2. Download image ###
 
 [VM optimized images](http://www.turnkeylinux.org/docs/builds#vm) and
 [Generic ISO image](http://www.turnkeylinux.org/docs/builds#iso) work well with
 VirtualBox. We will choose default VM build and use that.
 
-### Create new VM ###
+
+### 3. Create new VM ###
 
 Unzip the default VM build and lauch the VM creation wizard by clicking the *New*
 button in VirtualBox:
 
 - OS Type: Linux / Ubuntu
+
 - Memory:  at least 256 MB
+
 - Virtual Hard Disk: use an existing hard disk
 
-### Configurate VM ###
+
+### 4. Configurate VM ###
 
 After you've created the new VM, you'll need to tweak its configuration:
 
 - Settings > System > Processor > Enable PAE/NX
+
 - Settings > Network > Adapter 1 > Attach to: bridged
 
 Now boot your virtual appliance for the first time.
+
 
 ------
 
@@ -132,7 +151,8 @@ from source.
 With TKLDev, building an appliance from scratch is as easy as grabbing the source
 and running make.
 
-### Install TKLDev ###
+
+### 1. Install TKLDev ###
 
 Like any other TurnKey appliance, TKLDev is available for download in multiple 
 build formats from the TurnKey Linux website.
@@ -143,7 +163,8 @@ type appliance image requires an amd64 build of TKLDev.
 Shellinabox (as well as Webmin) is installed but disabled by default so as not
 to conflict with appliance builds. You should connect via an SSH client.
 
-### Setup TKLDev ###
+
+### 2. Setup TKLDev ###
 
 By convention, the source code for an appliance is placed within tkldev in
 /turnkey/fab/products (e.g., /turnkey/fab/products/core, /turnkey/fab/products/wordpress,
@@ -154,13 +175,16 @@ build dependencies and place them into their appropriate paths within the TKLDev
 filesystem:
 
 - `/turnkey/fab/bootstraps`: contains minimal bootstrap filesystems.
+
 - `/turnkey/fab/cdroots`: contains the cdroot template for the built ISO.
+
 - `/turnkey/fab/common`: contains source code shared amongst all TurnKey appliances.
 
 Click [here](https://github.com/turnkeylinux-apps/tkldev/blob/master/docs/setup.rst)
 for more details for this.
 
-### Build appliance ###
+
+### 3. Build appliance ###
 
 Now that everything is in place, clone the source code of TurnKey Core, and perform
 the build:
