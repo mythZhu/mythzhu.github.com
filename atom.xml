@@ -4,7 +4,7 @@
   <title><![CDATA[Learn and Live]]></title>
   <link href="http://mythZhu.github.com/atom.xml" rel="self"/>
   <link href="http://mythZhu.github.com/"/>
-  <updated>2014-01-09T18:30:08+08:00</updated>
+  <updated>2014-01-09T18:41:57+08:00</updated>
   <id>http://mythZhu.github.com/</id>
   <author>
     <name><![CDATA[Myth]]></name>
@@ -44,10 +44,10 @@ appliances and embedded operating systems.</p>
 <p>Typically, a JeOS consists of the following:</p>
 
 <ul>
-<li>OS core (kernel, drives, etc.)</li>
-<li>OS minimum maintenance tools</li>
-<li>Minimum user space tools</li>
-<li>Packages repository (DVD or network based)</li>
+<li><p>OS core (kernel, drives, etc.)</p></li>
+<li><p>OS minimum maintenance tools</p></li>
+<li><p>Minimum user space tools</p></li>
+<li><p>Packages repository (DVD or network based)</p></li>
 </ul>
 
 
@@ -61,16 +61,16 @@ standard hardware (typically a server) or in a virtual machine.</p>
 that are installed on top of an operating system:</p>
 
 <ul>
-<li>Simplified deployment (dependency, compatibility, conflict)</li>
-<li>Improved isolation (security, crash)</li>
+<li><p>Simplified deployment (dependency, compatibility, conflict)</p></li>
+<li><p>Improved isolation (security, crash)</p></li>
 </ul>
 
 
 <p>There two main types of software appliances:</p>
 
 <ul>
-<li>Live CD appliance</li>
-<li>Virtual appliance</li>
+<li><p>Live CD appliance</p></li>
+<li><p>Virtual appliance</p></li>
 </ul>
 
 
@@ -109,35 +109,35 @@ an image creates a virtual appliance.</p>
 running with TurnKey Linux. The installation process is the same for all appliances.
 We&rsquo;ll be installing <a href="http://www.turnkeylinux.org/lapp">LAPP</a> as an example.</p>
 
-<h3>Install VirtualBox</h3>
+<h3>1. Install VirtualBox</h3>
 
 <p>If you haven&rsquo;t done so already, download and install <a href="http://www.virtualbox.org">VirtualBox</a>.</p>
 
-<h3>Download image</h3>
+<h3>2. Download image</h3>
 
 <p><a href="http://www.turnkeylinux.org/docs/builds#vm">VM optimized images</a> and
 <a href="http://www.turnkeylinux.org/docs/builds#iso">Generic ISO image</a> work well with
 VirtualBox. We will choose default VM build and use that.</p>
 
-<h3>Create new VM</h3>
+<h3>3. Create new VM</h3>
 
 <p>Unzip the default VM build and lauch the VM creation wizard by clicking the <em>New</em>
 button in VirtualBox:</p>
 
 <ul>
-<li>OS Type: Linux / Ubuntu</li>
-<li>Memory:  at least 256 MB</li>
-<li>Virtual Hard Disk: use an existing hard disk</li>
+<li><p>OS Type: Linux / Ubuntu</p></li>
+<li><p>Memory:  at least 256 MB</p></li>
+<li><p>Virtual Hard Disk: use an existing hard disk</p></li>
 </ul>
 
 
-<h3>Configurate VM</h3>
+<h3>4. Configurate VM</h3>
 
 <p>After you&rsquo;ve created the new VM, you&rsquo;ll need to tweak its configuration:</p>
 
 <ul>
-<li>Settings > System > Processor > Enable PAE/NX</li>
-<li>Settings > Network > Adapter 1 > Attach to: bridged</li>
+<li><p>Settings > System > Processor > Enable PAE/NX</p></li>
+<li><p>Settings > Network > Adapter 1 > Attach to: bridged</p></li>
 </ul>
 
 
@@ -156,7 +156,7 @@ from source.</p>
 <p>With TKLDev, building an appliance from scratch is as easy as grabbing the source
 and running make.</p>
 
-<h3>Install TKLDev</h3>
+<h3>1. Install TKLDev</h3>
 
 <p>Like any other TurnKey appliance, TKLDev is available for download in multiple
 build formats from the TurnKey Linux website.</p>
@@ -167,7 +167,7 @@ type appliance image requires an amd64 build of TKLDev.</p>
 <p>Shellinabox (as well as Webmin) is installed but disabled by default so as not
 to conflict with appliance builds. You should connect via an SSH client.</p>
 
-<h3>Setup TKLDev</h3>
+<h3>2. Setup TKLDev</h3>
 
 <p>By convention, the source code for an appliance is placed within tkldev in
 /turnkey/fab/products (e.g., /turnkey/fab/products/core, /turnkey/fab/products/wordpress,
@@ -178,16 +178,16 @@ build dependencies and place them into their appropriate paths within the TKLDev
 filesystem:</p>
 
 <ul>
-<li><code>/turnkey/fab/bootstraps</code>: contains minimal bootstrap filesystems.</li>
-<li><code>/turnkey/fab/cdroots</code>: contains the cdroot template for the built ISO.</li>
-<li><code>/turnkey/fab/common</code>: contains source code shared amongst all TurnKey appliances.</li>
+<li><p><code>/turnkey/fab/bootstraps</code>: contains minimal bootstrap filesystems.</p></li>
+<li><p><code>/turnkey/fab/cdroots</code>: contains the cdroot template for the built ISO.</p></li>
+<li><p><code>/turnkey/fab/common</code>: contains source code shared amongst all TurnKey appliances.</p></li>
 </ul>
 
 
 <p>Click <a href="https://github.com/turnkeylinux-apps/tkldev/blob/master/docs/setup.rst">here</a>
 for more details for this.</p>
 
-<h3>Build appliance</h3>
+<h3>3. Build appliance</h3>
 
 <p>Now that everything is in place, clone the source code of TurnKey Core, and perform
 the build:</p>
