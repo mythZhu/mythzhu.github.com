@@ -5,7 +5,6 @@ date: 2014-01-08 21:37
 comments: true
 categories: 
 ---
-
 ------
 
 *Turnkey Linux* is a virtual appliance library that integrates and polishes the
@@ -14,8 +13,8 @@ is optimized for ease of use and can be deployed in just a few minutes on bare
 metal, a virtual machine and in the cloud.
 <!--more-->
 
-
 ------
+
 
 ## Background ##
 
