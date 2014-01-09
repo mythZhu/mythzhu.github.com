@@ -9,8 +9,8 @@
   <meta name="author" content="Myth">
 
   
-  <meta name="description" content="What Is TurnKey Jan 8th, 2014 Turnkey Linux is a virtual appliance library that integrates and polishes the very
-best open source software into &hellip;">
+  <meta name="description" content="What Is TurnKey Jan 8th, 2014 Turnkey Linux is a virtual appliance library that integrates and polishes the
+very best open source software into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,17 +98,22 @@ best open source software into &hellip;">
     <div class="span12">
       <hr />
 
-<p>Turnkey Linux is a virtual appliance library that integrates and polishes the very
-best open source software into ready to use solutions. Each virtual appliance is
-optimized for ease of use and can be deployed in just a few minutes on bare metal,
-a virtual machine and in the cloud.</p>
+<p><em>Turnkey Linux</em> is a virtual appliance library that integrates and polishes the
+very best open source software into ready to use solutions. Each virtual appliance
+is optimized for ease of use and can be deployed in just a few minutes on bare
+metal, a virtual machine and in the cloud.</p>
 
 <!--more-->
 
 
 <hr />
 
-<h2>JeOS</h2>
+<h2>Background</h2>
+
+<p>The following background knowledge could help you understand &lsquo;what is TurnKey linux&rsquo;.
+If you have been similiar with them, you could skip this section.</p>
+
+<h3>JeOS</h3>
 
 <p><a href="http://en.wikipedia.org/wiki/Just_enough_operating_system">JeOS</a> is the abbreviation
 (pronounced &ldquo;juice&rdquo;) for Just Enough Operating System as it applies to a software
@@ -117,39 +122,29 @@ appliances and embedded operating systems.</p>
 <p>Typically, a JeOS consists of the following:</p>
 
 <ul>
-<li>JeOS media (OS core {kernel, virtual drives, login})</li>
+<li>OS core (kernel, drives, etc.)</li>
 <li>OS minimum maintenance tools</li>
 <li>Minimum user space tools</li>
 <li>Packages repository (DVD or network based)</li>
 </ul>
 
 
-<hr />
-
-<h2>Software appliance</h2>
+<h3>Software appliance</h3>
 
 <p>A <a href="http://en.wikipedia.org/wiki/Software_appliance">software appliance</a> is a software
 application that might be combined with JeOS for it to run optimally on industry
 standard hardware (typically a server) or in a virtual machine.</p>
 
-<h3>Benefits</h3>
-
-<p>Software appliances have several benefits over traditional software applications that
-are installed on top of an operating system:</p>
+<p>Software appliances have several benefits over traditional software applications
+that are installed on top of an operating system:</p>
 
 <ul>
-<li><p><em>Simplified deployment</em>: A software appliance encapsulates an application&rsquo;s dependencies
-in a pre-integrated, self-contained unit. This can dramatically simplify software
-deployment by freeing users from having to worry about resolving potentially complex
-OS compatibility issues, library dependencies or undesirable interactions with other
-applications. This is known as a &ldquo;toaster&rdquo;.</p></li>
-<li><p><em>Improved isolation</em>: Software appliances are typically used to run applications
-in isolation from one another. If the security of an appliance is compromised, or
-if the appliance crashes, other isolated appliances will not be affected.</p></li>
+<li>Simplified deployment (dependency, compatibility, conflict)</li>
+<li>Improved isolation (security, crash)</li>
 </ul>
 
 
-<h3>Types</h3>
+<p>There two main types of software appliances:</p>
 
 <ul>
 <li>Live CD appliance</li>
@@ -157,56 +152,40 @@ if the appliance crashes, other isolated appliances will not be affected.</p></l
 </ul>
 
 
-<hr />
+<h3>Virtual appliance</h3>
 
-<h2>Virtual appliance</h2>
+<p>A <a href="http://http://en.wikipedia.org/wiki/Virtual_appliance">virtual appliance</a> is
+a virtual machine image designed to run on a virtualization platform (e.g.,
+VirtualBox, Xen, VMware Workstation, Parallels Workstation).</p>
 
-<p>A <a href="http://http://en.wikipedia.org/wiki/Virtual_appliance">virtual appliance</a> is a virtual
-machine image designed to run on a virtualization platform (e.g., VirtualBox, Xen, VMware
-Workstation, Parallels Workstation).</p>
-
-<p>Virtual appliances are a subset of the broader class of software appliances. Installation
-of a software appliance on a virtual machine and packaging that into an image creates a
-virtual appliance.</p>
+<p>Virtual appliances are a subset of the broader class of software appliances.
+Installation of a software appliance on a virtual machine and packaging that into
+an image creates a virtual appliance.</p>
 
 <hr />
 
-<h2>Why to use</h2>
+<h2>Benefits</h2>
 
 <ul>
-<li><p><em>Save time and money with 100+ ready-to-use solutions</em>: discover and leverage the
-best free open source software. Deploy in minutes on bare metal, virtual machines,
-or in the cloud.</p></li>
-<li><p><em>It just works</em>: designed for ease of use, built and pre-tested by a community of
-experts.</p></li>
-<li><p><em>Backup and migration</em>: smart software saves changes to files, databases and package
-management to encrypted storage which servers can be automatically restored from.</p></li>
-<li><p><em>Secure and easy to maintain</em>: auto-updated daily with latest security patches.</p></li>
-<li><p><em>100% Open Source</em>: free from expensive and restrictive proprietary licensing. Easy
-to customize and extend to build new appliances from the closest existing starting
-point.</p></li>
-<li><p><em>Based on Debian 7.2 (&ldquo;Wheezy&rdquo;)</em>: with automatic security updates for over 39,000
-packages. The TurnKey Linux virtual appliance library is licensed under the same
-terms as Debian. In other words, you are free to download, use, redistribute and
-modify a virtual appliance for any purpose.</p></li>
-<li><p><em>Easy to use</em>: includes a web management interface, web shell, and simple configuration
-console (screenshots).</p></li>
-<li><p><em>Lightweight (starting from 150MB)</em>: each virtual appliance is carefully built from
-the ground up with the minimum components needed to serve its role with maximum
-efficiency and security.</p></li>
-<li><p><em>Assured integrity</em>: solutions are built from verfiably unmodified Debian binaries,
-except for a few custom components for which full source code is available. Releases
-are cryptographically signed.</p></li>
+<li><p>Save time and money with 100+ ready-to-use solutions</p></li>
+<li><p>It just works</p></li>
+<li><p>Backup and migration</p></li>
+<li><p>Secure and easy to maintain</p></li>
+<li><p>100% Open Source</p></li>
+<li><p>Based on Debian 7.2 (&ldquo;Wheezy&rdquo;)</p></li>
+<li><p>Easy to use</p></li>
+<li><p>Lightweight (starting from 150MB</p></li>
+<li><p>Assured integrity</p></li>
 </ul>
 
 
 <hr />
 
-<h2>How to install</h2>
+<h2>Installation</h2>
 
-<p>Installing to a VirtualBox is one of the fastest and easiest ways to get up and running
-with TurnKey Linux. The installation process is the same for all appliances. We&rsquo;ll be
-installing <a href="http://www.turnkeylinux.org/joomla">TurnKey Joomla</a> as an example.</p>
+<p>Installing to a VirtualBox is one of the fastest and easiest ways to get up and
+running with TurnKey Linux. The installation process is the same for all appliances.
+We&rsquo;ll be installing <a href="http://www.turnkeylinux.org/lapp">LAPP</a> as an example.</p>
 
 <h3>Install VirtualBox</h3>
 
@@ -215,13 +194,13 @@ installing <a href="http://www.turnkeylinux.org/joomla">TurnKey Joomla</a> as an
 <h3>Download image</h3>
 
 <p><a href="http://www.turnkeylinux.org/docs/builds#vm">VM optimized images</a> and
-<a href="http://www.turnkeylinux.org/docs/builds#iso">Generic ISO image</a> work well with VirtualBox.
-We will choose default VM build and use that.</p>
+<a href="http://www.turnkeylinux.org/docs/builds#iso">Generic ISO image</a> work well with
+VirtualBox. We will choose default VM build and use that.</p>
 
 <h3>Create new VM</h3>
 
-<p>Unzip the default VM build and lauch the VM creation wizard by clicking the <em>New</em> button
-in VirtualBox:</p>
+<p>Unzip the default VM build and lauch the VM creation wizard by clicking the <em>New</em>
+button in VirtualBox:</p>
 
 <ul>
 <li>OS Type: Linux / Ubuntu</li>
@@ -241,6 +220,78 @@ in VirtualBox:</p>
 
 
 <p>Now boot your virtual appliance for the first time.</p>
+
+<hr />
+
+<h2>Development</h2>
+
+<p><a href="http://www.turnkeylinux.org/tkldev">TKLDev</a> is the mother of all TurnKey appliances.
+It&rsquo;s used to give birth to all other appliances, including new versions of itself.
+It includes a self-contained appliance development toolchain and build system that
+can be used by appliance hackers to fabricate any existing or new TurnKey appliance
+from source.</p>
+
+<p>With TKLDev, building an appliance from scratch is as easy as grabbing the source
+and running make.</p>
+
+<h3>Install TKLDev</h3>
+
+<p>Like any other TurnKey appliance, TKLDev is available for download in multiple
+build formats from the TurnKey Linux website.</p>
+
+<p>TKLDev doesn&rsquo;t support cross-architecture builds. That means building an amd64
+type appliance image requires an amd64 build of TKLDev.</p>
+
+<p>Shellinabox (as well as Webmin) is installed but disabled by default so as not
+to conflict with appliance builds. You should connect via an SSH client.</p>
+
+<h3>Setup TKLDev</h3>
+
+<p>By convention, the source code for an appliance is placed within tkldev in
+/turnkey/fab/products (e.g., /turnkey/fab/products/core, /turnkey/fab/products/wordpress,
+etc.).</p>
+
+<p>Before you build your first appliance, you will need to download 3 prerequisite
+build dependencies and place them into their appropriate paths within the TKLDev
+filesystem:</p>
+
+<ul>
+<li><code>/turnkey/fab/bootstraps</code>: contains minimal bootstrap filesystems.</li>
+<li><code>/turnkey/fab/cdroots</code>: contains the cdroot template for the built ISO.</li>
+<li><code>/turnkey/fab/common</code>: contains source code shared amongst all TurnKey appliances.</li>
+</ul>
+
+
+<p>Click <a href="https://github.com/turnkeylinux-apps/tkldev/blob/master/docs/setup.rst">here</a>
+for more details for this.</p>
+
+<h3>Build appliance</h3>
+
+<p>Now that everything is in place, clone the source code of TurnKey Core, and perform
+the build:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /turnkey/fab/products
+</span><span class='line'>git-clone https://github.com/turnkeylinux-apps/core.git
+</span><span class='line'>cd core
+</span><span class='line'>make</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above will create build/product.iso which you should copy to your host system
+for testing in a VM.</p>
+
+<p>Finally, perform cleanup:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>deck -D build/root.tmp
+</span><span class='line'>make clean</span></code></pre></td></tr></table></div></figure>
+
+
+
 
     </div>
   </div>
